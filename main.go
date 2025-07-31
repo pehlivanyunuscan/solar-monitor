@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"os"
+	"time"
 )
 
 // Genel uygulama logları için logger
@@ -35,6 +37,43 @@ type AuditLog struct {
 	Method     string      `json:"method"`
 	StatusCode int         `json:"status_code"`
 	ClientIP   string      `json:"client_ip"`
-	Params     interface{} `json:"params, omitempty"`
-	Message    string      `json:"message, omitempty"`
+	Params     interface{} `json:"params,omitempty"`
+	Message    string      `json:"message,omitempty"`
+}
+
+func LogAudit(user, endpoint, method string, statusCode int, clientIP string, params interface{}, message string) {
+	auditLog := AuditLog{
+		Timestamp:  time.Now().Format(time.RFC3339),
+		User:       user,
+		Endpoint:   endpoint,
+		Method:     method,
+		StatusCode: statusCode,
+		ClientIP:   clientIP,
+		Params:     params,
+		Message:    message,
+	}
+
+	jsonEntry, err := json.Marshal(auditLog)
+	if err != nil {
+		appLogger.Printf("Audit log oluşturulamadı: %v", err)
+		return
+	}
+
+	auditLogger.Println(string(jsonEntry))
+}
+
+func main() {
+	// Uygulama logu örneği
+	appLogger.Println("Uygulama başlatıldı")
+
+	// Audit logu örneği
+	LogAudit(
+		"yunuscan",
+		"/api/cameras/status",
+		"GET",
+		200,
+		"192.168.1.1",
+		map[string]string{"camera_id": "1"},
+		"Başarılı istek",
+	)
 }
