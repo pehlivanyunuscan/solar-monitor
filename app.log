@@ -1,0 +1,29 @@
+APP: 2025/07/31 14:45:20 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:26 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:27 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:28 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:28 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:29 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:29 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:45:30 main.go:67: Uygulama başlatıldı
+APP: 2025/07/31 14:48:19 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:48:20 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:48:20 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:48:21 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:48:21 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:48:21 main.go:7: Uygulama başlatıldı
+APP: 2025/07/31 14:57:56 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 14:57:56 main.go:30: Sunucu başlatılamadı: listen tcp :8080: bind: address already in use
+APP: 2025/07/31 14:58:16 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 14:58:16 main.go:30: Sunucu başlatılamadı: listen tcp :8080: bind: address already in use
+APP: 2025/07/31 14:58:46 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 14:58:46 main.go:30: Sunucu başlatılamadı: listen tcp :8080: bind: address already in use
+APP: 2025/07/31 14:58:47 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 14:58:47 main.go:30: Sunucu başlatılamadı: listen tcp :8080: bind: address already in use
+APP: 2025/07/31 14:58:48 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 14:58:48 main.go:30: Sunucu başlatılamadı: listen tcp :8080: bind: address already in use
+APP: 2025/07/31 15:00:45 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 15:01:06 main.go:12: Kamera endpoint çağrıldı
+APP: 2025/07/31 15:01:48 main.go:12: Kamera endpoint çağrıldı
+APP: 2025/07/31 15:01:50 main.go:12: Kamera endpoint çağrıldı
+APP: 2025/07/31 15:02:09 main.go:12: Kamera endpoint çağrıldı
