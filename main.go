@@ -26,3 +26,15 @@ func init() {
 	}
 	auditLogger = log.New(auditLogFile, "AUDIT: ", log.Ldate|log.Ltime|log.Lshortfile)
 }
+
+// Audit log için struct
+type AuditLog struct {
+	Timestamp  string      `json:"timestamp"`
+	User       string      `json:"user"`
+	Endpoint   string      `json:"endpoint"`
+	Method     string      `json:"method"`
+	StatusCode int         `json:"status_code"`
+	ClientIP   string      `json:"client_ip"`
+	Params     interface{} `json:"params, omitempty"`
+	Message    string      `json:"message, omitempty"`
+}
