@@ -27,3 +27,5 @@ APP: 2025/07/31 15:01:06 main.go:12: Kamera endpoint çağrıldı
 APP: 2025/07/31 15:01:48 main.go:12: Kamera endpoint çağrıldı
 APP: 2025/07/31 15:01:50 main.go:12: Kamera endpoint çağrıldı
 APP: 2025/07/31 15:02:09 main.go:12: Kamera endpoint çağrıldı
+APP: 2025/07/31 15:05:37 main.go:26: Uygulama başlatıldı
+APP: 2025/07/31 15:06:00 main.go:12: Kamera endpoint çağrıldı
