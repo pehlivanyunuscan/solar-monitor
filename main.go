@@ -14,9 +14,9 @@ func cameraHandler(w http.ResponseWriter, r *http.Request) {
 	logging.AppLogger.Println("Kamera endpoint çağrıldı")
 
 	// Prometheus'tan kamera metriklerini çek
-	// Örn: kamera_aktif_sayisi isminde bir metrik
+	// Örn: camera_status isminde bir metrik
 	promURL := "http://localhost:9090" // Prometheus adresin
-	metric := "kamera_aktif_sayisi"    // Çekmek istediğin metrik
+	metric := "camera_status"          // Çekmek istediğin metrik
 
 	result, err := prometheus.QueryPrometheus(promURL, metric)
 	if err != nil || len(result.Data.Result) == 0 {
@@ -25,16 +25,22 @@ func cameraHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Metrik değerini çek
-	value := result.Data.Result[0].Value[1]
+	// Tüm kameraların durumunu bir map olarak hazırla
+	cameraStates := make(map[string]string)
+	for _, res := range result.Data.Result {
+		cameraName := res.Metric["camera"]
+		statusValue := res.Value[1].(string)
+		if statusValue == "1" {
+			cameraStates[cameraName] = "açık"
+		} else {
+			cameraStates[cameraName] = "kapalı"
+		}
+	}
 
-	// Audit loglama
-	logging.LogAudit("user123", "/camera", r.Method, http.StatusOK, r.RemoteAddr, nil, "Kamera erişildi")
+	logging.LogAudit("user123", "/camera", r.Method, http.StatusOK, r.RemoteAddr, nil, "Kamera durumları listelendi")
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]interface{}{
-		"aktif_kamera_sayisi": value,
-	})
+	json.NewEncoder(w).Encode(cameraStates)
 }
 
 func main() {
