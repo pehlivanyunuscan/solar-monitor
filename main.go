@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 
 	"main.go/logging"
 	"main.go/prometheus"
@@ -15,8 +16,11 @@ func cameraHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Prometheus'tan kamera metriklerini çek
 	// Örn: camera_status isminde bir metrik
-	promURL := "http://localhost:9090" // Prometheus adresin
-	metric := "camera_status"          // Çekmek istediğin metrik
+	promURL := os.Getenv("PROM_URL") // Prometheus URL'sini ortam değişkeninden al
+	if promURL == "" {
+		promURL = "http://localhost:9090" // Varsayılan adres
+	}
+	metric := "camera_status" // Çekmek istediğin metrik
 
 	result, err := prometheus.QueryPrometheus(promURL, metric)
 	if err != nil || len(result.Data.Result) == 0 {
