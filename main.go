@@ -20,7 +20,10 @@ func cameraHandler(w http.ResponseWriter, r *http.Request) {
 	if promURL == "" {
 		promURL = "http://localhost:9090" // Varsayılan adres
 	}
-	metric := "camera_status" // Çekmek istediğin metrik
+	metric := os.Getenv("PROM_METRIC") // Prometheus metriğini ortam değişkeninden al
+	if metric == "" {
+		metric = "camera_status" // Varsayılan değer (silinecek)
+	}
 
 	result, err := prometheus.QueryPrometheus(promURL, metric)
 	if err != nil || len(result.Data.Result) == 0 {
